@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rdsPP" nsURI="http://www.rdspp.de/xtext/RdsPP" nsPrefix="rdsPP">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RDSPPMarking" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gemeinsameZuordnung" eType="#//CommonAssignment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="funktionsbezogeneKennzeichnung"
+        eType="#//FunctionalDesignation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="funktionaleZuordnung" eType="#//FunctionalAssignment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="einbauortkennzeichnung"
+        eType="#//InstallationLocationDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aufstellungsortkennzeichnung"
+        eType="#//LocationDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produktbezogenekennzeichnung"
+        eType="#//ProductDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anschlusskennzeichnung"
+        eType="#//ConnectionIdentification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signalkennzeichnung" eType="#//SignalIdentification"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dokumentenkennzeichnung"
+        eType="#//DocumentIdentification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RDSPPComponent" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SignalIdentification" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentIdentification" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalAssignment" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalDesignation" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InstallationLocationDescription" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationDescription" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionIdentification" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CommonAssignment" eSuperTypes="#//RDSPPComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductDescription" eSuperTypes="#//RDSPPComponent"/>
+</ecore:EPackage>

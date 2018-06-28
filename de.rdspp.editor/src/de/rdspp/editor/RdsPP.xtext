@@ -1,0 +1,51 @@
+grammar de.rdspp.editor.RdsPP with org.eclipse.xtext.common.Terminals
+
+generate rdsPP "http://www.rdspp.de/xtext/RdsPP"
+
+Model:
+	declarations+=Declaration*;
+
+Declaration:
+	RDSPPComponent | RDSPPMarking;
+
+RDSPPMarking:
+	"RDS-PPKENNZEICHNUNG" ("#" gemeinsameZuordnung=[CommonAssignment])? ("="
+	funktionsbezogeneKennzeichnung=[FunctionalDesignation])? ("==" funktionaleZuordnung=[FunctionalAssignment])? ("+"
+	einbauortkennzeichnung=[InstallationLocationDescription])? ("++" aufstellungsortkennzeichnung=[LocationDescription])?
+	("-" produktbezogenekennzeichnung=[ProductDescription])? (":" anschlusskennzeichnung=[ConnectionIdentification])?
+	(";" signalkennzeichnung=[SignalIdentification])? ("&" dokumentenkennzeichnung=[DocumentIdentification])?;
+
+RDSPPComponent:
+	(CommonAssignment | LocationDescription | InstallationLocationDescription | FunctionalAssignment |
+	FunctionalDesignation | ProductDescription | ConnectionIdentification | DocumentIdentification |
+	SignalIdentification);
+
+SignalIdentification:
+	"SIGNALKENNZEICHNUNG" ";" name=ID ("->" description=STRING)?;
+
+DocumentIdentification:
+	"DOKUMENTENKENNZEICHNUNG" "&" name=ID ("->" description=STRING)?;
+
+FunctionalAssignment:
+	"FUNKTIONALEZUORDNUNG" "==" name=ID ("->" description=STRING)?;
+
+FunctionalDesignation:
+	"FUNKTIONSBEZOGENEKENNZEICHNUNG" "=" name=ID ("->" description=STRING)?;
+
+InstallationLocationDescription:
+	"EINBAUORTKENNZEICHNUNG" "+" name=ID ("->" description=STRING)?;
+
+LocationDescription:
+	"AUFSTELLUNGSORTKENNZEICHNUNG" "++" name=ID ("->" description=STRING)?;
+
+ConnectionIdentification:
+	"ANSCHLUSSKENNZEICHNUNG" ":" name=ID ("->" description=STRING)?;
+
+CommonAssignment:
+	"GEMEINSAMEZUORDNUNG" "#" name=ID ("->" description=STRING)?;
+
+ProductDescription:
+	"PRODUKTBEZOGENEKENNZEICHNUNG" "-" name=ID ("->" description=STRING)?;
+
+@ Override terminal ID:
+	('a'..'z' | 'A'..'Z' | INT) ('a'..'z' | 'A'..'Z' | INT | "." | "/" | "_")*;
